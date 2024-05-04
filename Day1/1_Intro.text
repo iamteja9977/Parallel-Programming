@@ -1,0 +1,130 @@
+Speeding up computations is a goal that everybody wants to achieve.
+What if you have a script that could run ten times faster than its current running time?
+
+
+
+example : if you have 10 task, to complete which takes 10 hours 
+
+Serial Computing
+================
+ to do the 1task it takes 1 hour for you,
+ to complete entire task you will task 10 hours , to do sequencially.
+ it is called the serial computing. where "you" referred as a core of the CPU. 
+
+parallel computing
+==================
+
+ where as in parallel programming ,
+ you are taking help of your 3 friends , those who are free .
+ now, you are working along with your friends so total 4 cores.
+ so 10 tasks takes only 3.333 hours of time to complete the tasks.
+ the task is divided among multiple cores, takes less time when compared to the serial computing.
+
+->Parallel processing can increase the number of tasks done by your program which reduces the overall processing time.
+ These help to handle large scale problems.
+->Parallel computing involves the usage of parallel processes or processes
+     that are divided among multiple cores in a processor.
+
+-------->>>     Usually, when you run a Python script, your code at some point becomes a process,
+ and the process runs on a single core of your CPU. But modern computers have more than one core, 
+ so what if you could use more cores for your computations?
+ It turns out that your computations will be faster.
+ 
+
+
+
+ ========================================================================================
+
+
+
+parallel programming
+=====================
+ the process of decomposing a problem into smaller tasks 
+  that can be executed at the same time using multiple compute resources.
+
+   The idea behind parallelism is 
+ to write your code in such a way that it can use multiple cores of the CPU.
+
+Each sub process can have its own set of memory as well as share memory with other processes.
+A problem where the sub-units are totally independent of other sub-units is called "embarrassingly parallel"
+
+ The term parallel programming may be used interchangeable with "parallel processing".
+
+ which refers to the systems that enable the high efficiency of parallel programming.
+
+  Because a supercomputer has a large network of nodes with many cores, we must implement parallelization strategies with our applications 
+  to fully utilize a supercomputing resource.
+
+  How Does Parallel Programming Work?
+  ======================================
+  Parallel programming works by assigning tasks to different nodes or cores. 
+  Parallel computation connects multiple processors to memory that is either pooled or connected via high speed networks.
+
+   In High Performance Computing (HPC) systems, a node is a self-contained unit of a computer system contains memory and processors running an operating system.
+    Processors, such as central processing units (CPUs) and graphics processing units (GPUs), are chips that contain a set of cores. Cores are the units executing commands; there can be multiple cores in a processor and multiple processors in a node.
+
+What Is Parallel Programming Used For..?
+========================================
+Parallel programming’s ability to decompose tasks makes it a suitable solution for complex problems involving large quantities of data, complex calculations or large simulations. 
+Previously unsolvable problems have been decomposed using parallel programming, such as weather simulations, vaccine development,
+*National defense and nuclear weaponry
+*Applied physics
+*Climate research
+
+
+
+There are two main ways to handle parallel programs:
+====================================================
+
+1.Shared Memory
+-----------------
+In shared memory, the sub-units can communicate with each other through the same memory space. 
+The advantage is that you don’t need to handle the communication explicitly because this approach is sufficient to read or write from the shared memory. But the problem arises when multiple process access and change the same memory location at the same time.
+This conflict can be avoided using synchronization techniques.
+
+->Threads are one of the ways to achieve parallelism with shared memory. 
+->These are the independent sub-tasks that originate from a process and share memory.
+
+->Due to Global Interpreter Lock (GIL) , threads can’t be used to increase performance in Python.
+GIL is a mechanism in which Python interpreter design allow only one Python instruction to run at a time.
+GIL limitation can be completely avoided by using processes instead of thread. 
+Using processes have few disadvantages such as less efficient inter-process communication than shared memory, but it is more flexible and explicit.
+
+
+
+2.Distributed memory
+In distributed memory, each process is totally separated and has its own memory space.
+In this scenario, communication is handled explicitly between the processes.
+Since the communication happens through a network interface, it is costlier compared to shared memory.
+
+->a separate segment of memory is available to each processor.
+ Because memory isn’t shared inherently, information that must be shared between processes is sent over a network.
+
+
+
+
+
+ Tools for Parallel Programming
+ ==============================
+
+ Two common solutions for creating parallel code are OpenMP and MPI
+
+OpenMP:
+-------
+OpenMP (“Open Multi-Processing”) is a compiler-side application programming interface (API) for creating code that can run on a system of threads.
+ No external libraries are required in order to parallelize your code. OpenMP is often considered more user friendly with thread safe methods and parallel sections of code that can be set with simple scoping. 
+ OpenMP is, however, limited to the amount of threads available on a node – in other words, it follows a shared memory model.
+ On a node with 64 CPUs, you can use no more than 64 processors.
+
+MPI:
+----
+MPI (“Message Passing Interface”) is a library standard for handling parallel processing. 
+Unlike OpenMP, MPI has much more flexibility in how individual processes handle memory. 
+MPI is also compatible with multi-node structures, allowing for very large, multi-node applications (i.e, distributed memory models). 
+MPI is, however, often considered less accessable and more difficult to learn. Regardless, learning the library provides a user with the ability to maximize processing ability. 
+MPI is a library standard, meaning there are several libraries based on MPI that you can use to develop parallel code.
+ OpenMPI and Intel MPI are solutions available on most CURC systems.
+
+
+
+
