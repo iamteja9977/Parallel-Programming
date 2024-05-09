@@ -1,0 +1,36 @@
+1. moduleIntro.Py
+2.simpleCode.Py
+3.3ImportSimpleCode.Py
+4.UsingPkg1.Py
+5 UsingPkg2.py  
+  ---------------- both are not running
+
+remaining 5 are running successfully
+------------------------------------------------------------------------------
+
+Note: In a module, when we run the entire module directly using:
+	python3 modulename.py
+	Then, the "__name__" inside that module becomes "__main__"
+	But when we use that module inside some another python program,
+	Then, the "__name__" inside that module becomes "modulename"
+	Therefore, when we want to run a module directly,
+	we can have a if condition like:
+	if __name__ == "__main__":
+		# do something
+
+	python creates cache files in __pycache__ which contains .pyc files
+	if you notice, these are cpython files.
+	They are bytecode files which are generated after compilation.
+	They are stored in cache so that they are easy to import and execute.
+
+
+=============================================================================
+
+	Collection of modules (Python files) is a package (folder):
+
+	1. import myPkg.moduleIntro
+	2. import myPkg.moduleIntro as mp
+	3. from myPkg.moduleIntro import *
+	4. from myPkg.moduleIntro import funOne, dataOne
+	5. from myPkg import moduleIntro
+	6. from myPkg import moduleIntro as mi 
