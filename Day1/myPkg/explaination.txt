@@ -1,9 +1,12 @@
 1. moduleIntro.Py
 2.simpleCode.Py
 3.3ImportSimpleCode.Py
+------------------------------------------
+
 4.UsingPkg1.Py
 5 UsingPkg2.py  
-  ---------------- both are not running
+
+  ---------------- both are not running, need to write outside of the folder and run from their
 
 remaining 5 are running successfully
 ------------------------------------------------------------------------------
