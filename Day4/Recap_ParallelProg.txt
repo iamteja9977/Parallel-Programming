@@ -1,0 +1,105 @@
+# Revision on Parallel Programming:
+
+Parallel Computing, parallel processing or multi-processing is to enable or perform multiple tasks/programs to run simultaneously on multiple processors.
+
+What we tend to do is by splitting a single task into multiple independant smaller or sub-tasks. Where each sub-tasks is nothing but set of instructions which can run simultaneously on different processors.
+
+From your shell point of view...
+
+Read:
+
+$man taskset
+You will notice that, taskset can "bond" a particular command to a processor.
+
+Hexadecimal numbering system for processors:
+
+0000 --> 1
+
+0011 --> 3
+
+0111 1111 --> 127
+
+1111 1111 --> 255
+
+--cpu-lists 0-7
+
+CPU affinity means that a particular program "prefers" to be run on a particular processor.
+
+similarly, we can use taskset command to set or retrieve the CPU affinity of a running process by using hexadecimal value of the processor. This processor id is called "bit mask".
+We will also pass the pid of the process we want to bind and the command and arguments that we want to execute.
+
+
+---------------------------------------------
+**when we run any linux command along with "&" we can run that command in background.**
+
+for eg:
+
+$taskset 1 ./testOne &
+
+will run testOne bashScript in background. Notice that process_id is returned, lets say its 55.
+
+you can check the affinity mask by the following command:
+
+$taskset -p process_id1 process_id2 ....
+
+for eg:
+
+taskset -p 55 57
+
+You can check the number of processors in your computer by the following command:
+
+$nproc
+
+
+
+We can also change the affinity of a particular process by the following command:
+
+for eg:
+
+taskset -cp processor_id processid
+
+
+"--cpu-lists" option specifies a list of CPUs in numerical order.
+
+taskset also has a lot of options like "-p", "-c", etc.
+
+for more info refer to manual page of taskset command.
+
+Also try out "$kill -l" to see the list of signals and their correponding number.
+
+kill command helps us send signals on whether to stop/start or change the status of a process.
+for more info refer to manual page of kill command
+
+-----------------------------
+
+### Task: run mpOne.py, mpTwo.py and mpThree.py with taskset command
+
+you can also use redirection ">" to output print statements to another file:
+
+./testOne.py > testOne.out 
+
+you can use "$wc -l filename" for getting word count.
+
+make it a background process final argument "&" and use sleep to adjust the speed of output.
+
+---------------------------------------
+
+## Process state codes:
+
+PROCESS STATE CODES
+1.   R --> running or runnable (on run queue)
+2.   D --> uninterruptible sleep (usually IO)
+3.   S --> interruptible sleep (waiting for an event to complete)
+4.   Z --> defunct/zombie, terminated but not reaped by its parent
+5.   T --> Terminated, stopped, either by a job control signal or because
+      it is being traced
+
+
+You can use "$ps -L" to view all the threads and thread IDs (LWP).
+
+Try using it after you make a multithreaded process into a background process.
+
+use "$ps -f" for full format listing of a process but does not give thread info.
+
+"$ps -F" gives more extra info.
+
