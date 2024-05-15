@@ -1,0 +1,91 @@
+--> MPI with the mpi4py
+ run like this : mpiexec -n 4 python3
+
+- Open MPI Project is an open source project for Message Passing Interface implementation.
+- This project is developed and maintained by an consortium (aka group) of academic, research and industry partners.
+- It is for High Performance Computing (HPC).
+- Python program that we use mpi4py module has to be run using MPI interpreter which is provided with mpirun command.
+     In some systems (OS) instead of mpirun we may have to use mpiexec.
+
+---------------------------------------------------------------------
+1. Simple hello world ... using mpi4py
+2. differentiating between each process based on rank.
+3. simple send/recv data between two processes.
+
+Next is 
+
+## Broadcasting
+
+- Broadcasting is sending one data (exact copy) to all processes on the communicator.
+
+
+## Scatter
+
+- Scatter takes a range of  data and sends it across the ranks. (i.e. it can send different data).
+
+## Gather
+- It is opposite of scatter.
+- It takes subset of an array that are distributed across the ranks and gathers them into a full array.
+=====================================================
+
+
+## PASL --> Parsl
+- Parsl is a "Python native library" that allows to write and execute parallel functions, bring together dependencies.
+- Parsl wraps Python functions as applications/apps which can be used as decorators.
+- for example:
+    - @functionName --> decorator in python
+ 
+- Install in linux environment using $pip install parsl
+
+    
+    # just an example of decorators in python:
+@python_app
+def fun():  
+    pass
+    # wraps the fun as Python app ..
+
+@bash_app  
+def fun():  
+    pass
+    # wraps the fun as bash (Bourne Again Shell) app..
+
+
+
+------------------------------------------------------------------------
+
+Before getting on with further examples....
+===========================================
+	let us revise some basics...
+		in Python 
+		in Bash
+
+
+## What is a shell?
+-------------------
+- Shell is said to a command interpreter.
+- When you are  working or interacting with OS. There are two interfaces:
+  - GUI = Graphical User Interface
+  - CLI = Command Line Interface
+      - in Windows --> command prompt
+      - in UNIX/Linux --> shell
+- When interacting with shell ...
+    - input ---> standard Input file/device ---> 0
+    - output ---> standard output file/device ---> 1 
+    - error ---> standard error file/device ---> 2
+ 
+    - In C
+        - stdin, stdout, stderr
+    - In C++
+        - cin, cout, cerr
+    - In Python
+        - from sys import stdin, stdout, stderr
+     
+    - that is by default
+        - all input is from keyboard (stdin),
+        - all output is to console (stdout),
+        - all errors is to console (stderr).
+
+## I/O Redirection:
+- < --> input/read from file
+- \> --> output/write into a file (overwrite)
+- \>\> --> output/append into a file
